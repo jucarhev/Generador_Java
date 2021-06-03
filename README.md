@@ -1,4 +1,4 @@
-#Generador de datos para mysql
+# Generador de datos para mysql
 *En proceso de trabajo*  
 # Listas
 
