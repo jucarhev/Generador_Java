@@ -5,6 +5,11 @@ import java.awt.event.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Random;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author carlos
@@ -15,16 +20,18 @@ public class Generador {
      * @param args the command line arguments
      */
     
-    public String[] Vocals = {"A","E","I","O","U"};
+    String[] Vocals = {"A","E","I","O","U"};
     String[] Consonant = {"B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"};
     String[] Alphabet = {"A","E","I","O","U","B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"};
     String[] Numbers = {"1","2","3","4","5","6","7","8","9","0"};
     String[] extensiones = {"@gmail.com","@outlook.com"};
     
+    Calendar unaFecha;
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Generador gen = new Generador();
-        gen.test();
+        gen.menu();
     }
     
     // @Funcion de tetting
@@ -52,10 +59,10 @@ public class Generador {
     public void data(String col, String lista, String config, String dato){
        System.out.println(col + " " + lista+ " " +config+" "+ dato);
        
-       System.out.println(col +"="+ convertItoS(generarRandom(config)) ); 
+       //System.out.println(col +"="+ convertItoS(generarRandom(config)) ); 
        
        if(lista =="Email"){
-           generarEmail(10);
+           JOptionPane.showMessageDialog(null, generarEmail( convertStoI(config) ));
        }
     }
     
@@ -66,7 +73,7 @@ public class Generador {
             cadena += DataRandomFromArray(Vocals);
         }
         cadena+=DataRandomFromArray(extensiones);
-        System.out.print(cadena);
+        System.out.println(cadena);
         return cadena;
     }
     
@@ -83,6 +90,16 @@ public class Generador {
     
     public String convertItoS(int numero){
         return numero+"";
+    }
+    
+    public String convertMtoC(String palabra, String reversa){
+        String cadena="";
+        if(reversa == "mayusculas"){
+            cadena = palabra.toUpperCase();
+        }else if(reversa == "minusculas"){
+            cadena = palabra.toLowerCase();
+        }
+        return cadena;
     }
     
     public String DataRandomFromArray(String[] array){
@@ -113,6 +130,20 @@ public class Generador {
         System.arraycopy(array2, 0, nuevo, array1.length, array2.length);
         
         return nuevo;
+    }
+    
+    public String generarFecha() {
+        int numero = 0;
+        Random aleatorio;
+        aleatorio = new Random();
+
+        unaFecha = Calendar.getInstance();
+        unaFecha.set (aleatorio.nextInt(10)+2014, aleatorio.nextInt(12)+1, aleatorio.nextInt(30)+1);
+        
+        Date myDate = new Date();
+        
+        String fecha = new SimpleDateFormat("dd/MM/yyyy").format(myDate);
+        return fecha;
     }
     
 }
