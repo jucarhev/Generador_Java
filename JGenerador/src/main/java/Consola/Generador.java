@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Consola;
 
 import javax.swing.*;
@@ -20,7 +15,13 @@ public class Generador {
     public static void main(String[] args) {
         // TODO code application logic here
         Generador gen = new Generador();
-        gen.menu();
+        //gen.menu();
+        
+    }
+    
+    public String DataRandomFronArray(String[] array){
+        int numero = ThreadLocalRandom.current().nextInt( 0, array.length );
+        return array[numero];
     }
     
     public void menu(){
@@ -74,5 +75,10 @@ public class Generador {
     public String convertItoS(int numero){
         return numero+"";
     }
+    
+    String[] Vocals = {"A","E","I","O","U"};
+    String[] Consonant = {"B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"};
+    String[] Alphabet = {"A","E","I","O","U","B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"};
+    String[] Numbers = {"1","2","3","4","5","6","7","8","9","0"};
     
 }
